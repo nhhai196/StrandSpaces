@@ -48,6 +48,30 @@ Definition NSLResponder : Strand :=
 Hypothesis NSLProtocol : 
   Protocol = [NSLInitiator ; NSLResponder].
 
+Hypothesis neqNaNb : Na <> Nb.
+
+Hypothesis uqNb: UniqOrigin (!Nb).
+
+Variable Kp : set Key.
+
+Hypothesis Ka_inv_not_in_Kp : ~(exists Ka_1, set_In Ka_1 Kp /\ Inv Ka Ka_1).
+
+Definition s1:Strand := cons (+ (! Na)) nil.
+Check s1.
+
+Definition xp := snd (s1, 0) < length (fst (s1,0)).
+Check xp.
+Check sig.
+
+Definition P (n:Strand*nat) : Prop := snd n < length (fst n).
+
+(*Definition n1 := exist (fun n: (Strand*nat) => snd n < length (fst n))
+                            (s1, 0) (snd (s1, 0) < length (fst (s1,0))).
+
+
+Lemma Nb_originates_at_n0 : Origin (!Nb) .
+*)
+
 End NSLSpace.
 
 Export NSLSpace.

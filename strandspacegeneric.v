@@ -132,6 +132,7 @@ Definition 6.1 immediate implication:
 
 g <st h iff h in (kIdeal g I)
 *)
+(*
 Lemma subterm_ideal_member : forall g h I K,
 IdealK I K g ->
 (g <st h <-> set_In h I).
@@ -146,7 +147,7 @@ Proof.
   apply Ik. apply IHSubterm. auto. auto.
 
 destruct H.
-  induction H; subst; auto.
+  induction K; subst; auto.
   eapply (Ik l). apply IHSubterm. auto. auto.
   eapply (Ik r). apply IHSubterm. auto. auto.
   destruct K.
@@ -156,5 +157,5 @@ destruct H.
   eapply Ik.
 
 
-
+*)
 End SimpleSpaces.

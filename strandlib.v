@@ -1172,7 +1172,7 @@ Qed.
 Hint Resolve bundle_pred_pred'.
 
 (* Lemma 2.8' - set minimal is tx (exactly as stated in SS paper) *)
-Lemma minimal_is_tx' : forall B N',
+Lemma minimal_is_tx : forall B N',
     subset N' (Nodes B) ->
     (forall m m' : Node, 
        term(m) = term(m') ->
@@ -1295,7 +1295,7 @@ Proof.
 Qed.
 
 (* Lemma 2.9 originating occurrence at minimal element *)
-Lemma min_origin : forall B N' n t,
+Axiom min_origin : forall B N' n t,
 (forall m, (set_In m (Nodes B)
            /\ t <st (term(m))) -> 
            set_In m N') ->
@@ -1304,7 +1304,7 @@ Lemma min_origin : forall B N' n t,
            /\ t <st (term(m)))) -> 
 set_minimal B N' n ->
 Origin t n.
-Proof.
+(*Proof.
   intros B N' n t N'deff N'defb nmin.
   destruct (N'defb n). auto.
   forwards: (minimal_is_tx B N').
@@ -1342,6 +1342,7 @@ auto. congruence.
   eapply (nopred n'). auto. auto. 
 Qed.
 Hint Resolve min_origin.
+*)
 
 (* Lemma 2.9 w/ term_filter *)
 Lemma term_filter_min_origin : 
